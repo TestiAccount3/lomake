@@ -37,13 +37,7 @@ const App = () => {
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
       <h1>Hei</h1>
-      {ipAddress ? (
-        <p>
-          Testi <strong>!</strong>
-        </p>
-      ) : (
-        <p>Ladataan...</p>
-      )}
+      <div>Hei</div>
     </div>
   );
 };
