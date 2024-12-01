@@ -1,48 +1,26 @@
-name: CI and Deploy to GitHub Pages
+name: CI/CD
 
 on:
   push:
     branches:
-      - main  # Tämä workflow käynnistyy, kun muutoksia pusketaan main-haaraan
-  pull_request:
-    branches:
-      - main  # Tämä workflow käynnistyy, kun pull request tehdään main-haaraan
-
+      - main
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build the project
-        run: npm run build  # Tämä vaihe luo build-hakemiston
+      - name: Build
+        run: npm run build
 
-      - name: Run tests
-        run: npm test  # Valinnainen vaihe, jos haluat ajaa testit
-      - name: List project files
-        run: ls -R  # Listaa kaikki tiedostot ja kansiot
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build  # Tämä varmistaa, että deploy-vaihe suoritetaan vasta buildin jälkeen
-    steps:
-      - name: Set up Pages
-        uses: actions/configure-pages@v5
-      - name: List project files
-        run: ls -R  # Listaa kaikki tiedostot ja kansiot
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './build'  # Tässä vaiheessa otetaan käyttöön build-hakemiston sisältö
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+      - name: Deploy
+        run: |
+          git pull origin main  # Varmistaa, että uusimmat muutokset on haettu
+          npm install           # Asentaa riippuvuudet
+          npm run build          # Rakentaa sovelluksen
+          dir      # Käynnistää sovelluksen uudelleen
