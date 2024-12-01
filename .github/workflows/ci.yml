@@ -23,4 +23,4 @@ jobs:
           git pull origin main  # Varmistaa, että uusimmat muutokset on haettu
           npm install           # Asentaa riippuvuudet
           npm run build          # Rakentaa sovelluksen
-          dir      # Käynnistää sovelluksen uudelleen
+          npm run deploy      # Käynnistää sovelluksen uudelleen
