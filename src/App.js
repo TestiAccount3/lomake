@@ -15,7 +15,7 @@ const App = () => {
           'Content-Type': 'text/plain;charset=utf-8',
         },
         
-        body: JSON.stringify({name: "uusi", email: "30.11.2024"}),
+        body: JSON.stringify({name: "uusi", email: "3245.2024"}),
       });
 
       const result = await response.json();

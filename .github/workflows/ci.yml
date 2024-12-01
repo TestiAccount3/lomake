@@ -17,10 +17,3 @@ jobs:
 
       - name: Build
         run: npm run build
-
-      - name: Deploy
-        run: |
-          git pull origin main  # Varmistaa, että uusimmat muutokset on haettu
-          npm install           # Asentaa riippuvuudet
-          npm run build          # Rakentaa sovelluksen
-          npm run deploy      # Käynnistää sovelluksen uudelleen
