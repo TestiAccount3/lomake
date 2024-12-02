@@ -17,3 +17,6 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      -name: Add file
+        run: echo "hei" > newFile.txt
