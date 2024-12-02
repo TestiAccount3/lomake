@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -18,5 +19,5 @@ jobs:
       - name: Build
         run: npm run build
 
-      -name: Add file
+      - name: Add file
         run: echo "hei" > newFile.txt
