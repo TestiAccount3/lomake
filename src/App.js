@@ -39,7 +39,8 @@ const App = () => {
       const result = await response.json();
       if (result.result === 'Success') {
       } else {
-        console.log("Ei onnistunut");
+        console.log("Ei onnistunut", hash, data.nimi);
+        
       }
     } catch (error) {
       console.log('Virhe: ' + error.message);
@@ -48,7 +49,7 @@ const App = () => {
   }
 
   useEffect(() => {
-    
+
   }, []);
 
 
